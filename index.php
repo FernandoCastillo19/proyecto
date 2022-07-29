@@ -9,11 +9,12 @@
 <body>
     <form action="validar.php" method="post">
     <h1>sistema de login</h1>
-    <p>Usuario <input type="text" placeholder="ingrese su nombre" name="usuario"></p>
-    <p>Contrasena <input type="password" placeholder="ingrese su contrasena" name="contrasena"></p>
+    <p>Usuario <input type="text" placeholder="ingrese su nombre" name="user"></p>
+    <p>Contrasena <input type="password" placeholder="ingrese su contrasena" name="pass"></p>
     <input type="submit" value="Ingresar">
-
-
     </form>
+    <?php
+    
+    ?>
 </body>
 </html>

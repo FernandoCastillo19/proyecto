@@ -1,25 +1,28 @@
 <?php
-$usuario=$_POST['usuario'];
-$contrasena=$_POST['contrasena'];
-session_start();
-$_SESSION['usuario']=$usuario;
 
-include('db.php');
+include("conexion.php");
 
-$consulta="SELECT*FROM usuarios where usarios='$usuario' and contrasena='$contrasena'";
-$resultado=mysqli_querry($conexion,$consulta); 
+if(isset($_POST['user']) && isset($_POST['pass'])){
 
-$filas=mysqli_num_rows($resultado);
 
-if($filas){
-    hader("localtion:home.php");
-}else{
-    ?>
-    <?php
-    include("index.php");
-    ?>
-    <h1 class="bad">ERROR EN LA AUTENTIFICACION</h1>
-    <?php
+    $user=$_POST['user'];
+    $pass=$_POST['pass'];
+
+    $consultar="SELECT*FROM ingreso where user='$user' and pass='$pass'";
+
+    $validar=mysqli_query($con_bd,$consultar);
+
+    $row=mysqli_num_rows($validar);
+
+    if($row<1){
+        echo'<script language="javascript">alert("Intente de Nuevo");</script>';
+    }else{
+        header("location:login.php");
+    }
+
 }
-mysqli_free_result($resultado);
-mysqli_close($conexion);
+
+
+
+
+?>
